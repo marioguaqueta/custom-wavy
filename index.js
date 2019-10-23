@@ -51,7 +51,7 @@ define( function( require ) {
         connection.trigger('requestEndpoints');
 
         
-        $(destinationSelector).change(function() {
+        $(messageTemplateSelector).change(function() {
             onInputChange();
             //to show in other step
         });
