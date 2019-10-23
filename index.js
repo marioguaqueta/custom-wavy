@@ -253,7 +253,7 @@ define( function( require ) {
     }
 
     function isValidInput() {
-        if( isEmptyString(getTargetSystem()) || isEmptyString(getMessageTemplate()) )
+        if( isEmptyString(getMessageTemplate()) )
             return false;
         
         if( isEmptyString(getPhone()) && isEmptyString(getEmail()) )
@@ -275,10 +275,6 @@ define( function( require ) {
         });
         var activityIndex = namedActivities ? namedActivities.length + 1 : 0;
         return activityNamePrefix + activityIndex;
-    }
-
-    function getTargetSystem() {
-        return $(destinationSelector).find('option:selected').attr('value').trim();
     }
 
     function getMessageTemplate() {
