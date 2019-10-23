@@ -63,41 +63,52 @@
             color: #080707;
             background-color: #f3f2f2;
         }
+
+        .warning{
+            color: red;
+            font-weight: bold;
+
+        }
+        .title{
+            font-weight: bold;
+        }
     </style>
 
 </head>
 <body>
-<div id="step1" class="step">
-    <div id="glo-data-extension-warning"><span>Data extension not detected. Please configure the data extension before configuring activity.</span></div>
+    <div id="step1" class="step">
+        <div id="glo-data-extension-warning">
+            <span class="warning">
+                Extensão de dados não encontrada, configure antes de usar esta atividade
+            </span></div>
 
-    <form id="glo-send-test-sms-form">
-        <fieldset>                     
-            <div class="glo-placeholder-list">
-                <span>Supported placeholders:</span>
-                <ul id="glo-placeholder-list"></ul>
-            </div>
+            <form id="glo-send-test-sms-form">
+                <fieldset>                     
+                    <div class="glo-placeholder-list">
+                        <span class="title">Campos de extensão de dados</span>
+                        <ul id="glo-placeholder-list"></ul>
+                    </div>
 
-            <div class="glo-input">
-                <label for="glo-message-template-input">Type in your message template</label>
-                <textarea id="glo-message-template-input" name="message-template" rows="10" cols="80"></textarea>
-            </div>
+                    <div class="glo-input">
+                        <label for="glo-message-template-input" class="title">Type in your message template</label>
+                        <textarea id="glo-message-template-input" name="message-template" rows="10" cols="80"></textarea>
+                    </div>
 
-            <div class="glo-input">
-                <label for="glo-email-parameter">Email Address data extension parameter</label>
-                <select id="glo-email-parameter"></select>
-            </div>
-            
-            <div class="glo-input">
-                <label for="glo-phone-parameter">Phone number data extension parameter</label>
-                <select id="glo-phone-parameter"></select>
-            </div>
+                    <div class="glo-input">
+                        <label for="glo-email-parameter">Email Address data extension parameter</label>
+                        <select id="glo-email-parameter"></select>
+                    </div>
 
-        </fieldset>
-    </form>
-</div>
+                    <div class="glo-input">
+                        <label for="glo-phone-parameter">Phone number data extension parameter</label>
+                        <select id="glo-phone-parameter"></select>
+                    </div>
 
-<div id="step2" class="step">
-    <h3>Setup complete!</h3>
-</div>
-</body>
-</html>
+                </fieldset>
+            </form>
+        </div>
+        <div id="step2" class="step">
+            <h3>Setup complete!</h3>
+        </div>
+    </body>
+    </html>
