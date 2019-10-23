@@ -228,10 +228,8 @@ define( function( require ) {
             }
         }
         inArguments.push({ "messageTemplate": getMessageTemplate() });
-        inArguments.push({ "destination": getTargetSystem() });
         inArguments.push({ "phone": getPhone() });
         inArguments.push({ "email": getEmail() });
-        inArguments.push({ 'isTokenized': getIsTokenized() });
         inArguments.push({ 'activityName': activityName });
         
         activityData['arguments'].execute.inArguments = inArguments;
@@ -295,9 +293,6 @@ define( function( require ) {
         return $(emailSelector).val();
     }
     
-    function getIsTokenized(){
-        return $(isTokenizedSelector).is(":checked");
-    }
 
     function fillPlaceholderList(schema) {
         if (schema !== undefined && schema.length > 0) {
