@@ -25,9 +25,7 @@ define( function( require ) {
     var phoneSelectorValue = undefined;
     var emailSelectorValue = undefined;
     var destinationSelectorValue = undefined;
-    var messageTemplateSelector = 'textarea#glo-message-template-input';
-    var isTokenizedSelector = '#glo-is-tokenized-parameter';
-    var isTokenizedValue = undefined;
+    var messageTemplateSelector = '#glo-message-template-input';
 
 
     $(window).ready(onRender);
@@ -56,7 +54,6 @@ define( function( require ) {
         $(destinationSelector).change(function() {
             onInputChange();
             //to show in other step
-            //$('#target-system').html(getTargetSystem()); 
         });
 
         onInputChange();
@@ -253,8 +250,9 @@ define( function( require ) {
     }
 
     function isValidInput() {
-        if( isEmptyString(getMessageTemplate()) )
+        if( isEmptyString(getMessageTemplate()) ){
             return false;
+        }
         
         if( isEmptyString(getPhone()) && isEmptyString(getEmail()) )
             return false;
