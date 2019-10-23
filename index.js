@@ -57,12 +57,15 @@ define( function( require ) {
         });
 
         onInputChange();
+
+        console.log("on render");
     }
 
     // Disable the next button if a value isn't selected
     function onInputChange() {
         var validInput = isValidInput();
         connection.trigger('updateButton', { button: 'next', enabled: validInput });
+        console.log("input change");
     }
 
     //next to OnRender
@@ -108,6 +111,8 @@ define( function( require ) {
 
         showStep(null, 1);
         connection.trigger('updateButton', { button: 'next', enabled: isValidInput() });
+
+        console.log("on input activity");
     }
 
     //to get Entry Source in Journey
@@ -132,12 +137,12 @@ define( function( require ) {
 
     function onGetTokens (tokens) {
         //Response: tokens = { token: <legacy token>, fuel2token: <fuel api token> }
-        console.log(tokens);
+        console.log('TOKENS ' + tokens);
     }
 
     function onGetEndpoints (endpoints) {
         //Response: endpoints = { restHost: <url> } i.e. "rest.s1.qa1.exacttarget.com"
-        console.log(endpoints);
+        console.log('Endpoints ' + endpoints);
     }
 
     function onClickedNext () {
@@ -146,18 +151,23 @@ define( function( require ) {
         } else {
             connection.trigger('nextStep');
         }
+
+        console.log("click next");
     }
 
     function onClickedBack () {
+        console.log("Click back");
         connection.trigger('prevStep');
     }
 
     function onGotoStep (step) {
+        console.log("Go to step");
         showStep(step);
         connection.trigger('ready');
     }
 
     function showStep(step, stepIndex) {
+        console.log("Show step");
         if (stepIndex && !step) {
             step = steps[stepIndex-1];
         }
@@ -195,6 +205,7 @@ define( function( require ) {
     }
 
     function save() {
+        console.log("Save");
         activityData.name = getActivityName();
         configureInArguments();
         configureOutArguments();
@@ -204,6 +215,7 @@ define( function( require ) {
     }
 
     function configureInArguments() {
+        console.log("Configure in arguments");
         var inArguments = [];
         if (schema !== undefined && schema.length > 0) {
             for (var i in schema) {
@@ -224,6 +236,7 @@ define( function( require ) {
     }
 
     function configureOutArguments() {
+        console.log("Configure out arguments");
         var outArguments = [];
         outArguments.push(createOutArgument('gloNotificationId'));
         outArguments.push(createOutArgument('gloNotificationPreliminaryStatus'));
@@ -231,6 +244,7 @@ define( function( require ) {
     }
 
     function createOutArgument(name) {
+        console.log("create out argument");
         var outArgument = {};
         outArgument[createOutArgumentName(name)] = 'String';
         return outArgument;
@@ -241,17 +255,25 @@ define( function( require ) {
     }
 
     function isValidInput() {
+        console.log("valid input");
+        console.log("Review 1 " + isEmptyString(getMessageTemplate()));
+        console.log("Review 2 " + isEmptyString(getPhone()));
+        console.log("Review 3 " + isEmptyString(getEmail()));
+
+
         if( isEmptyString(getMessageTemplate()) ){
             return false;
         }
         
-        if( isEmptyString(getPhone()) && isEmptyString(getEmail()) )
+        if( isEmptyString(getPhone()) && isEmptyString(getEmail()) ){
             return false;
+        }
         
         return true;
     }
 
     function getActivityName() {
+        console.log("Get Activity Name");
         if (isEmptyString(activityName)) {
             activityName = constructActivityName();
         }
@@ -259,6 +281,7 @@ define( function( require ) {
     }
 
     function constructActivityName() {
+        console.log("Construct activity name");
         var namedActivities = $.grep(journeyData['activities'], function(activity) {
             return !isEmptyString(activity.name) && activity.name.startsWith(activityNamePrefix);
         });
@@ -267,19 +290,23 @@ define( function( require ) {
     }
 
     function getMessageTemplate() {
+        console.log("get Message Template");
         return $(messageTemplateSelector)[0].value;
     }  
 
     function getPhone() {
+        console.log("get Phone");
         return $(phoneSelector).val();
     } 
 
     function getEmail() {
+        console.log("get Email");
         return $(emailSelector).val();
     }
     
 
     function fillPlaceholderList(schema) {
+        console.log("Fill placeholder");
         if (schema !== undefined && schema.length > 0) {
             for (var i in schema) {
                 var field = schema[i];
@@ -292,6 +319,7 @@ define( function( require ) {
     }
 
     function fillPhoneCombobox(schema) {
+        console.log("Fill Phone Combobox");
         if (schema !== undefined && schema.length > 0) {
             for (var i in schema) {
                 var field = schema[i];
@@ -309,6 +337,7 @@ define( function( require ) {
     }
 
     function fillEmailCombobox(schema) {
+        console.log("fill Email Combobox");
         if (schema !== undefined && schema.length > 0) {
             for (var i in schema) {
                 var field = schema[i];
@@ -326,21 +355,25 @@ define( function( require ) {
     }
 
     function saveFieldToInArguments(field, fieldName, inArguments) {
+        console.log("Save Field to In Arguments");
         var obj = {};
         obj[fieldName] = "{{" + field.key + "}}";
         inArguments.push(obj);
     }
 
     function isEventDataSourceField(field) {
+        console.log("is Event Data Source Field");
         return !field.key.startsWith('Interaction.');
     }
 
     function extractFieldName(field) {
+        console.log("Extract field Name");
         var index = field.key.lastIndexOf('.');
         return field.key.substring(index + 1);
     }
 
     function isEmptyString(text) {
+        console.log("Validate Empty String");
         return (!text || text.length === 0);
     }
 });
