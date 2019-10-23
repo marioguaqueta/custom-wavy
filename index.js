@@ -24,7 +24,7 @@ define( function( require ) {
     var destinationSelector = '#glo-destination-parameter'; 
     var phoneSelectorValue = undefined;
     var emailSelectorValue = undefined;
-    var destinationSelectorValue = undefined;
+
     var messageTemplateSelector = '#glo-message-template-input';
 
 
@@ -86,14 +86,10 @@ define( function( require ) {
             $.each(inArgument, function(key, val) {
                 if (key === 'messageTemplate') {
                     messageTemplate = val;
-                } else if (key === 'destination') {
-                    destinationSelectorValue = val;
-                } else if (key === 'phone') {
+                } else  if (key === 'phone') {
                     phoneSelectorValue = val;
                 } else if (key === 'email') {
                     emailSelectorValue = val;
-                } else if(key === 'isTokenized') {
-                    isTokenizedValue = val;
                 }
             });
         });
@@ -102,18 +98,13 @@ define( function( require ) {
         if (messageTemplate) {
             $(messageTemplateSelector).val(messageTemplate);
         }
-        if (destinationSelectorValue) {
-            $(destinationSelector).val(destinationSelectorValue);
-        }
         if (phoneSelectorValue) {
             $(phoneSelector).val(phoneSelectorValue);
         }
         if (emailSelectorValue) {
             $(emailSelector).val(emailSelectorValue);
         }
-        if (isTokenizedValue) {
-            $(isTokenizedSelector). prop("checked", isTokenizedValue);
-        }
+
 
         showStep(null, 1);
         connection.trigger('updateButton', { button: 'next', enabled: isValidInput() });
