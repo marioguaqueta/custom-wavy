@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Custom Journey Builder Activity</title>
+
+    <!-- JQuery version: 3.4.1 -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script data-main="js/main.js" src="js/require.js"></script>
+    
+    <!--Styles-->
+    <style type="text/css">
+        body {
+            padding: 20px;
+            margin: 0;
+            color: #3e3e3c;
+            font-family: "Salesforce Sans", Arial, sans-serif;
+        }
+        .step {
+            display: none;
+        }
+        #step1 {
+            display: block;
+        }
+        
+        .glo-checkbox{
+            display: inline-flex;
+        }
+        
+        .glo-input select {
+            display: inline-block;
+            padding: 5px;
+            border: 1px solid #dddbda;
+            border-radius: 5px;
+            font-weight: 400;
+        }
+        
+        .glo-input select:active, .glo-input select:focus {
+            outline: 0;
+            border-color: #1589ee;
+            background-color: white;
+            box-shadow: 0 0 3px #0070D2;
+        }
+        
+        .glo-input label {
+            line-height: 2.5rem;
+        }
+        .glo-input textarea,input {
+            display: block;
+        }
+        .glo-placeholder-list {
+            color: gray;
+        }
+        .glo-input-form {
+            display: inline-block;
+        }
+        #glo-data-extension-warning{
+            padding: 0.75rem;
+            margin-top:0.5rem;
+            margin-bottom:0.5rem;
+            width: auto;
+            color: #080707;
+            background-color: #f3f2f2;
+        }
+    </style>
+
+</head>
+<body>
+<div id="step1" class="step">
+    <div id="glo-data-extension-warning"><span>Data extension not detected. Please configure the data extension before configuring activity.</span></div>
+
+    <form id="glo-send-test-sms-form">
+        <fieldset>         
+            <div class="glo-checkbox">
+                <input type="checkbox" id="glo-is-tokenized-parameter" value="on"> <span> is tokenized?</span>
+            </div>
+            
+            <div class="glo-input">
+                Select your notification destination:
+                <select id="glo-destination-parameter">
+                    <option value="">Select an option</option>
+                    <option value="NEO">To NEO</option>
+                    <option value="Call Center">To Call Center</option>
+                    <option value="Call Center">To RED</option>
+                </select>
+            </div>
+            
+
+            <div class="glo-placeholder-list">
+                <span>Supported placeholders:</span>
+                <ul id="glo-placeholder-list"></ul>
+            </div>
+
+            <div class="glo-input">
+                <label for="glo-message-template-input">Type in your message template</label>
+                <textarea id="glo-message-template-input" name="message-template" rows="10" cols="80"></textarea>
+            </div>
+
+            <div class="glo-input">
+                <label for="glo-email-parameter">Email Address data extension parameter</label>
+                <select id="glo-email-parameter"></select>
+            </div>
+            
+            <div class="glo-input">
+                <label for="glo-phone-parameter">Phone number data extension parameter</label>
+                <select id="glo-phone-parameter"></select>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<div id="step2" class="step">
+    <h3>Setup complete!</h3>
+</div>
+</body>
+</html>

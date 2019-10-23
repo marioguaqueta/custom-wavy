@@ -1,0 +1,55 @@
+{
+    "workflowApiVersion": "1.1",
+    "metaData": {
+      "version": "1.1",
+      "icon": "img/communication.png",
+      "category": "message"
+    },
+    "type": "REST",
+    "lang": {
+       "en-US": {
+           "name": "Notifications Activity",
+           "description": "Send Notifications to other Systems"
+       }
+    },
+    "arguments": {
+        "execute": {
+            "inArguments": [],
+            "outArguments": [],
+            "url": "https://services-custom.yerita.com/execute/"
+        }
+    },
+    "configurationArguments": {
+       "save": {
+           "url": "https://custom-activity-aws-sns.herokuapp.com/ixn/activities/portalweb/save/"
+       },
+       "publish": {
+           "url": "https://custom-activity-aws-sns.herokuapp.com/ixn/activities/portalweb/publish/"
+       },
+       "validate": {
+           "url": "https://custom-activity-aws-sns.herokuapp.com/ixn/activities/portalweb/validate/"
+       },
+       "stop": {
+           "url": "https://custom-activity-aws-sns.herokuapp.com/ixn/activities/portalweb/stop/"
+       }
+    },
+    "wizardSteps": [
+       { "label": "Step 1", "key": "step1" },
+       { "label": "Step 2", "key": "step2" }
+    ],
+    "userInterfaces": {
+       "configModal": {
+           "height": 200,
+           "width": 300,
+           "fullscreen": true
+       }
+    },
+    "schema": {
+        "arguments": {
+            "execute": {
+                "inArguments": [],
+                "outArguments": []
+            }
+        }
+    }
+}
