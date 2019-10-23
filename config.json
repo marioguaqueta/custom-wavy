@@ -16,21 +16,21 @@
         "execute": {
             "inArguments": [],
             "outArguments": [],
-            "url": "https://services-custom.yerita.com/execute/"
+            "url": "https://custom-wavy.herokuapp.com/execute/"
         }
     },
     "configurationArguments": {
        "save": {
-           "url": "https://custom-activity-aws-sns.herokuapp.com/ixn/activities/portalweb/save/"
+           "url": "https://custom-wavy.herokuapp.com/save/"
        },
        "publish": {
-           "url": "https://custom-activity-aws-sns.herokuapp.com/ixn/activities/portalweb/publish/"
+           "url": "https://custom-wavy.herokuapp.com/publish/"
        },
        "validate": {
-           "url": "https://custom-activity-aws-sns.herokuapp.com/ixn/activities/portalweb/validate/"
+           "url": "https://custom-wavy.herokuapp.com/validate/"
        },
        "stop": {
-           "url": "https://custom-activity-aws-sns.herokuapp.com/ixn/activities/portalweb/stop/"
+           "url": "https://custom-wavy.herokuapp.com/stop/"
        }
     },
     "wizardSteps": [
