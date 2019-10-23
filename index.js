@@ -16,7 +16,7 @@ define( function( require ) {
     ];
     var currentStep = steps[0].key;
     var activityName = undefined;
-    var activityNamePrefix = "Notifications Activity";
+    var activityNamePrefix = "Wavy Message";
     var dataExtensionWarningSelector = '#glo-data-extension-warning';
     var placeholderListSelector = '#glo-placeholder-list';
     var phoneSelector = '#glo-phone-parameter';
@@ -132,24 +132,24 @@ define( function( require ) {
         fillPhoneCombobox(schema);
         fillEmailCombobox(schema);
         connection.trigger('updateButton', { button: 'next', enabled: isValidInput() });
-        //console.log('onRequestedSchema-data',data);
+        console.log('onRequestedSchema-data',data);
     }
 
     //to set Activity Name
     function onRequestedInteraction(data) {
         journeyData = data;
         activityName = getActivityName();
-        //console.log('onRequestedInteraction-data',journeyData);
+        console.log('onRequestedInteraction-data',journeyData);
     }
 
     function onGetTokens (tokens) {
-        // Response: tokens = { token: <legacy token>, fuel2token: <fuel api token> }
-        // console.log(tokens);
+        Response: tokens = { token: <legacy token>, fuel2token: <fuel api token> }
+        console.log(tokens);
     }
 
     function onGetEndpoints (endpoints) {
-        // Response: endpoints = { restHost: <url> } i.e. "rest.s1.qa1.exacttarget.com"
-        // console.log(endpoints);
+        Response: endpoints = { restHost: <url> } i.e. "rest.s1.qa1.exacttarget.com"
+        console.log(endpoints);
     }
 
     function onClickedNext () {

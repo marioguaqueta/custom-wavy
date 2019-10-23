@@ -8,8 +8,8 @@
     "type": "REST",
     "lang": {
        "en-US": {
-           "name": "Notifications Activity",
-           "description": "Send Notifications to other Systems"
+           "name": "Wavy Message",
+           "description": "Send whatsapp message via Wavy"
        }
     },
     "arguments": {
